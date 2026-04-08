@@ -1,4 +1,6 @@
-Estrutura do projeto:
+# 🎮 Game Template (SFML + C++)
+
+## 📁 Estrutura do Projeto
 
 ├── bin
 │   └── main
@@ -21,9 +23,50 @@ Estrutura do projeto:
     └── ui
         └── Button.hpp
 
+---
 
-Explicação do modelo:
+## 🧠 Explicação do Modelo
 
-- Na pasta "core" é onde fica os arquivos principais do template, sendo eles o State e o Game, respectivamente falando, é necesário para controlarmos as funções do projeto, como a handleEvent que é a função que vai ser chamada no loop de pollEvent, a update que passa o Delta Time (tempo entre o frame anterior e o atual) como parâmetro e serve para atualizar posições, lógica de física etc... por último a render que é a função que vai chamar após o window.clear, assim desenhando tudo na tela ( aqui vc coloca todos os window.draw(seu objeto drawable)); O game é a classe que vai ter o loop principal do jogo, e também onde será alterado os estados (ou telas, chame como quiser), por exemplo: trocar do estado menu para estado game, do estado game para o game over, etc...
+### 📦 Pasta `core/`
 
-- Na pasta States State ficam as classes que vão implementar a classe State que criamos em core, lá vamos definir seu handleEvent, update e render. Podemos aqui criar lógicas para alterar a cena etc
+Na pasta `core` ficam os arquivos principais do template: `Game` e `State`.
+
+A classe `State` define as funções base que serão utilizadas pelos estados do jogo:
+
+- `handleEvent` → chamada dentro do loop de eventos (`pollEvent`), responsável por tratar entradas do usuário
+- `update` → recebe o delta time (tempo entre o frame anterior e o atual) e é usada para atualizar lógica do jogo, como movimentação e cálculos
+- `render` → chamada após o `window.clear`, responsável por desenhar os elementos na tela (`window.draw(...)`)
+
+A classe `Game` é responsável por:
+
+- Executar o loop principal do jogo
+- Processar eventos
+- Atualizar o estado atual
+- Renderizar o estado atual
+- Gerenciar a troca de estados (ou telas)
+
+Exemplos de troca de estado:
+
+- Menu → Game  
+- Game → Game Over  
+
+---
+
+### 🎮 Pasta `states/`
+
+Na pasta `states` ficam as classes que implementam a classe `State`.
+
+Cada estado representa uma tela do jogo, como:
+
+- `MenuState`
+- `GameState`
+
+Nessas classes são implementadas as funções:
+
+- `handleEvent`
+- `update`
+- `render`
+
+Além disso, cada estado pode conter suas próprias lógicas, como controle de fluxo e mudanças de cena.
+
+---
