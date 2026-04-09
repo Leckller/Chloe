@@ -16,6 +16,14 @@ Button::Button(const sf::Vector2f& size, const sf::Font& font, const std::string
     );
 }
 
+void Button::setBgColor(sf::Color color) {
+    bgColor = color;
+}
+
+void Button::setHoverColor(sf::Color color) {
+    hoverColor = color;
+}
+
 void Button::setPosition(float x, float y) {
     shape.setPosition(x, y);
 
@@ -26,11 +34,19 @@ void Button::setPosition(float x, float y) {
     );
 }
 
-bool Button::isClicked(const sf::Vector2i& mousePos) const {
+bool Button::isHovered(const sf::Vector2i& mousePos) const {
     return shape.getGlobalBounds().contains(
         static_cast<float>(mousePos.x),
         static_cast<float>(mousePos.y)
     );
+}
+
+void Button::update(const sf::Vector2i& mousePos) {
+    if (isHovered(mousePos)) {
+        shape.setFillColor(hoverColor);
+    } else {
+        shape.setFillColor(bgColor);
+    }
 }
 
 void Button::draw(sf::RenderWindow& window) {
