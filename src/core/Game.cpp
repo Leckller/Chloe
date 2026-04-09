@@ -1,7 +1,7 @@
 #include "Game.hpp"
 #include "../states/MenuState.hpp"
 
-Game::Game() : window(sf::VideoMode(800, 600), "Template") {
+Game::Game() : window(sf::VideoMode(20 * 64, 13 * 64), "Template") {
     changeState(std::make_unique<MenuState>(*this));
 }
 

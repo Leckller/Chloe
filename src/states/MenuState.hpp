@@ -1,7 +1,12 @@
 #pragma once
 #include "../core/State.hpp"
+#include "../ui/Button.hpp"
 
 class MenuState : public State {
+private:
+    Button startButton;
+    sf::Font font;
+
 public:
     MenuState(Game& game);
 
