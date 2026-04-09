@@ -70,3 +70,19 @@ Nessas classes são implementadas as funções:
 Além disso, cada estado pode conter suas próprias lógicas, como controle de fluxo e mudanças de cena.
 
 ---
+
+## 📦 Entities
+
+A pasta `entities` é onde ficam as entidades do jogo.
+
+As entidades **não são obrigadas a implementar `handleInput`**, pois nem todas recebem entrada do usuário. Isso fica a critério de cada classe que herda de `Entity`.
+
+Cada entidade é responsável por sua própria lógica, como comportamento, movimentação e renderização.
+
+---
+
+## 🖥️ UI
+
+A pasta `ui` contém os componentes de interface reutilizáveis do template.
+
+Aqui ficam elementos como botões e outros componentes visuais que podem ser utilizados em diferentes estados do jogo.
