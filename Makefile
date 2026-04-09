@@ -4,9 +4,10 @@ SRC_DIR = src
 BIN_DIR = bin
 CORE_DIR = core
 STATES_DIR = states
+UI_DIR = ui
 TARGET = $(BIN_DIR)/main
 
-SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/$(CORE_DIR)/*.cpp $(SRC_DIR)/$(STATES_DIR)/*.cpp
+SRC = $(SRC_DIR)/main.cpp $(SRC_DIR)/$(CORE_DIR)/*.cpp $(SRC_DIR)/$(STATES_DIR)/*.cpp $(SRC_DIR)/$(UI_DIR)/*.cpp
 
 LIBS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
