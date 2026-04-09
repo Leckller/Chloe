@@ -26,7 +26,7 @@ void MenuState::handleEvent(sf::Event &event)
 }
 
 void MenuState::update(float dt) {
-    startButton.update(sf::Mouse::getPosition(game.getWindow()));
+    startButton.update(sf::Mouse::getPosition(game.getWindow()), dt);
 }
 
 void MenuState::render(sf::RenderWindow &window)

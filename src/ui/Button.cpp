@@ -24,6 +24,14 @@ void Button::setHoverColor(sf::Color color) {
     hoverColor = color;
 }
 
+sf::Color Button::lerpColor(const sf::Color& a, const sf::Color& b, float t) {
+    return sf::Color(
+        a.r + (b.r - a.r) * t,
+        a.g + (b.g - a.g) * t,
+        a.b + (b.b - a.b) * t
+    );
+}
+
 void Button::setPosition(float x, float y) {
     shape.setPosition(x, y);
 
@@ -41,12 +49,18 @@ bool Button::isHovered(const sf::Vector2i& mousePos) const {
     );
 }
 
-void Button::update(const sf::Vector2i& mousePos) {
+void Button::update(const sf::Vector2i& mousePos, float dt) {
     if (isHovered(mousePos)) {
-        shape.setFillColor(hoverColor);
+        hoverProgress += hoverProgressSpeed * dt;
     } else {
-        shape.setFillColor(bgColor);
+        hoverProgress -= hoverProgressSpeed * dt;
     }
+
+    // condicionais p n passar do valor da cor
+    if (hoverProgress < 0.f) hoverProgress = 0.f;
+    if (hoverProgress > 1.f) hoverProgress = 1.f;
+
+    shape.setFillColor(lerpColor(bgColor, hoverColor, hoverProgress));
 }
 
 void Button::draw(sf::RenderWindow& window) {
